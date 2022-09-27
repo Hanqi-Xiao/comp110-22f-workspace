@@ -32,7 +32,7 @@ def max(max_list: list[int]) -> int:
 def is_equal(list_1: list[int], list_2: list[int]) -> bool:
     """Determines if the two lists numerically indistinguishable."""
     if len(list_1) != len(list_2):  # checks if lists are equal length
-        raise ValueError("args are lists of unequal length")
+        return False
     i = 0
     while i < len(list_1):  # uses list_i to provide lists length
         if list_1[i] != list_2[i]:
@@ -42,11 +42,11 @@ def is_equal(list_1: list[int], list_2: list[int]) -> bool:
 
 
 def main() -> None:
-    """main"""
-    assert all([1,2,1],1) == False, "should be true"
-    assert max([1,2,123,3]) == 123, "should be 123"
-    assert is_equal([1,2,3], [1,2,3]) == True, "should be false"
-    assert is_equal([1,2,2], [1,2,3]) == False, "should be true"
+    """Main function."""
+    assert all([1, 2, 1], 1) is False, "should be true"
+    assert max([1, 2, 123, 3]) == 123, "should be 123"
+    assert is_equal([1, 2, 3], [1, 2, 3]) is True, "should be false"
+    assert is_equal([1, 2, 2], [1, 2, 3]) is False, "should be true"
 
 
 if __name__ == "__main__":
