@@ -15,7 +15,7 @@ for i in range(6,0,-1):
         continue
 
     valid: bool = True
-    operators: list = re.findall(r"\+|-|\*|\/|=|>|<|>=|<=|&|\||%|!|\^|\(|\)", question)
+    operators: list = re.findall(r"\+|-|\*|\/|\\|=|>|<|>=|<=|&|\||%|!|\^|\(|\)", question)
     print(operators, used_operators)
     for i in operators:
         if i in used_operators:
