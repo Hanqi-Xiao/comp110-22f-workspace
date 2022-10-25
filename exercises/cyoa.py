@@ -72,20 +72,22 @@ def greet() -> None:  # Rq 2.0 fulfilled.
 
 
 def initial_choice() -> None:
+    """Initial choice function to facilitate selection of player path."""
     global event_id
+    global gaming
     print("But enough talk....")
     print("Choose a path: 1) Trust in me and prepare for the exam; 2) Take the exam without studying;\n 3) Walk away from me, Egi-gogi-boli, and everything meaningful in life.")
-    choice: int = input(f"{player}'s Choice, 1 or 2 or 3: ")
+    choice: str = input(f"{player}'s Choice, 1 or 2 or 3: ")
     if choice == "3":
         print("You walk away from everything, and the Egi-gogi-boli ends...")
         process(2.0)
         print("GAME over.")
-        global gaming
         gaming = False
     elif choice == "2":
         event_id = 3
     else:  # This intentionally funnels all incorrect inputs into the last option.
         event_id = 1
+
 
 def event_1() -> None:  # Rq 3.1 fulfilled.
     """Event where milker asks the player to play a number guessing game to test the player's intelligence."""
@@ -169,7 +171,7 @@ def event_2(current_points: int) -> tuple[int, int]:  # Rq 4.1 fulfilled.
     return (current_points, current_event_id)
 
 
-def event_speak(msg: str) -> bool:
+def event_speak(msg: str) -> int:
     """Check if the player has said a nice thing. I initially planned to use sentimental analysis, but realized I couldn't use any libraries or read any txt files."""
     global ohno_points
     global player
@@ -195,11 +197,10 @@ def event_3(points: int, ohno_points: int, turns: int) -> None:
     """When the game ends this functin congradulates you!"""
     print(f"You have arrived at the exam room of the Egi-gogi-boli School! {EMOJI}")
     print(f"You have collected {points}/30 required POINTS in {turns} turns, but {ohno_points} are points instead of POINTS.")
-    print(f"Your studying with Milker isn't just preparation, it IS the exam. The exam involved whether you would illegally bribe Milker with NICE words to get points.")
+    print("Your studying with Milker isn't just preparation, it IS the exam. The exam involved whether you would illegally bribe Milker with NICE words to get points.")
     input(">Press Enter<")
     if points >= 30:
         if ohno_points > 5:
-            real_points: int = points - ohno_points
             print("You tried BRIBING Milker more than once for his points, by using NICE words. You don't deserve Egi-gogi-boli.")
         else:
             process(3.0)
@@ -222,7 +223,6 @@ def event_3(points: int, ohno_points: int, turns: int) -> None:
 
     global gaming 
     gaming = False
-
 
 
 def process(process_time: float = 1.0, animate_speed: float = 0.15) -> None:
