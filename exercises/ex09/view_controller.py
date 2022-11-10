@@ -43,7 +43,7 @@ class ViewController:
             self.pen.goto(cell.location.x, cell.location.y)
             self.pen.pendown()
             self.pen.color(cell.color())
-            self.pen.dot(constants.CELL_RADIUS)
+            self.pen.dot(constants.CELL_RADIUS)  # this implementation used to be cell radius without *2. That was wrong as dot takes size to be diameter
         self.screen.update()
 
         if self.model.is_complete():
